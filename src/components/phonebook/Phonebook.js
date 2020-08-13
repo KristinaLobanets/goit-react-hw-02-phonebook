@@ -3,6 +3,7 @@ import ContactForm from "../ContactForm/ContactForm";
 import ContactList from "../ContactList/ContactList";
 import Filter from "../filter/filter";
 import { v4 as uuidv4 } from "uuid";
+import styles from "./phonebook.module.css";
 
 class Phonebook extends Component {
   state = {
@@ -43,16 +44,20 @@ class Phonebook extends Component {
     const { name, number, contacts } = this.state;
     return (
       <>
-        <div>
-          <h1>Phonebook</h1>
-          <ContactForm
-            addContact={this.addContact}
-            name={name}
-            number={number}
-          />
+        <div className={styles.block}>
+          <div className={styles.form}>
+            <h1>Phonebook</h1>
+            <ContactForm
+              addContact={this.addContact}
+              name={name}
+              number={number}
+            />{" "}
+          </div>{" "}
+          <div className={styles.contacts}>
+            <Filter />
 
-          <Filter />
-          <ContactList />
+            <ContactList />
+          </div>
         </div>
       </>
     );

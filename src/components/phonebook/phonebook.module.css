@@ -1,0 +1,12 @@
+.block {
+  display: flex;
+  justify-content: start;
+}
+
+.form {
+  margin: 20px;
+}
+
+.contacts {
+  margin: 20px;
+}
