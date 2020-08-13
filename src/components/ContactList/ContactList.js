@@ -3,8 +3,14 @@ import React from "react";
 const Contacts = () => {
   return (
     <>
-      <h2>Contacts</h2>
-      <ul></ul>
+      <div>
+        <h2>Contacts</h2>
+        <ul>
+          {/* {Contacts.map((contact) => (
+          <li key={contact.id}>{contact.name}</li>
+        ))} */}
+        </ul>
+      </div>
     </>
   );
 };

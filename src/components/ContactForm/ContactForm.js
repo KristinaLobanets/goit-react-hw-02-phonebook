@@ -6,7 +6,7 @@ const ContactForm = ({ number, name, handleChange, addContact }) => {
   return (
     <>
       <div className={styles.block}>
-        <form onSubmit={this.addContact()} className={styles.form}>
+        <form onSubmit={addContact} className={styles.form}>
           <label className={styles.label}>
             Name:
             <input

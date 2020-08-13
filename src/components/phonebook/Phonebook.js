@@ -28,21 +28,23 @@ class Phonebook extends Component {
   //   this.setState({ [name]: e.target.value });
   // };
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const { name, number } = this.state;
-  //   this.props.addContact({ id: uuidv4(), name, number });
-  //   this.setState({ name: "", number: "" });
-  // };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, number } = this.state;
+    this.props.addContact({ id: uuidv4(), name, number });
+    this.setState({ name: "", number: "" });
+  };
 
-  //   getFilteredData = () => {
-  //     return this.state.filter
-  //         ? this.state.products.filter(name => name.title.toLowerCase().includes(this.state.filter.toLowerCase()))
-  //         : this.state.products
-  // }
+  getFilteredData = () => {
+    return this.state.filter
+      ? this.state.products.filter((name) =>
+          name.title.toLowerCase().includes(this.state.filter.toLowerCase())
+        )
+      : this.state.contacts;
+  };
 
   render() {
-    const { name, number } = this.state;
+    const { name, number, contacts } = this.state;
     return (
       <>
         <div>
@@ -53,7 +55,7 @@ class Phonebook extends Component {
             number={number}
           />
 
-          {/* <Filter getFilterValue={this.getFilterValue} value={filter} /> */}
+          <Filter />
           <ContactList />
         </div>
       </>
