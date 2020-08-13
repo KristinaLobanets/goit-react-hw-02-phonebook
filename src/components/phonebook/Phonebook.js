@@ -9,6 +9,7 @@ class Phonebook extends Component {
     contacts: [],
     name: "",
     number: "",
+    filter: "",
   };
 
   addContact = (contact) => {
@@ -17,15 +18,10 @@ class Phonebook extends Component {
     }));
   };
 
-  // inputHandler = ({ target }) => {
-  //   const { number, name } = target;
-  //   this.setState({ [name]: target.value });
-  // };
-
   handleChange = (e) => {
     const name = e.target.name;
     const number = e.target.number;
-    // this.setState({ [name]: e.target.value });
+    // this.setState({ []: e.target.value });
   };
 
   handleSubmit = (e) => {
