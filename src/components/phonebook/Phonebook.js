@@ -6,31 +6,34 @@ import { v4 as uuidv4 } from "uuid";
 
 class Phonebook extends Component {
   state = {
+    contacts: [],
     name: "",
     number: "",
-    filter: "",
+  };
+
+  addContact = (contact) => {
+    this.setState((prevState) => ({
+      contacts: [...prevState.contacts, contact],
+    }));
   };
 
   // inputHandler = ({ target }) => {
   //   const { number, name } = target;
-  //   this.setState({ [name]: value });
+  //   this.setState({ [name]: target.value });
   // };
 
   // handleChange = (e) => {
   //   const name = e.target.name;
   //   const number = e.target.number;
-  //   this.setState({ [name]: value });
+  //   this.setState({ [name]: e.target.value });
+  // };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const { name, number } = this.state;
-    this.props.addContact({ id: uuidv4(), name, number });
-    this.setState({ name: "", number: "" });
-  };
-
-  //   addContact = (product) => {
-  //     this.setState(prevState => ({ products: [...prevState.products, product] }))
-  // }
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const { name, number } = this.state;
+  //   this.props.addContact({ id: uuidv4(), name, number });
+  //   this.setState({ name: "", number: "" });
+  // };
 
   //   getFilteredData = () => {
   //     return this.state.filter
@@ -44,7 +47,11 @@ class Phonebook extends Component {
       <>
         <div>
           <h1>Phonebook</h1>
-          <ContactForm name={name} number={number} />
+          <ContactForm
+            addContact={this.addContact}
+            name={name}
+            number={number}
+          />
 
           {/* <Filter getFilterValue={this.getFilterValue} value={filter} /> */}
           <ContactList />

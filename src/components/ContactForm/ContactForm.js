@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./ContactForm.module.css";
+import Phonebook from "../phonebook/Phonebook";
 
-const ContactForm = ({ number, name, handleChange }) => {
+const ContactForm = ({ number, name, handleChange, addContact }) => {
   return (
     <>
       <div className={styles.block}>
-        <form className={styles.form}>
+        <form onSubmit={this.addContact()} className={styles.form}>
           <label className={styles.label}>
             Name:
             <input
@@ -14,7 +15,6 @@ const ContactForm = ({ number, name, handleChange }) => {
               name="name"
               placeholder="Your Name"
               value={name}
-              onChange={this.handleChange}
             ></input>
           </label>
           <label className={styles.label}>
@@ -25,7 +25,6 @@ const ContactForm = ({ number, name, handleChange }) => {
               name="number"
               placeholder="Your Number"
               value={number}
-              onChange={this.handleChange}
             ></input>
           </label>
           <button className={styles.button} type="submit">
