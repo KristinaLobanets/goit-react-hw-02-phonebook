@@ -5,16 +5,14 @@ const Filter = ({ searchContact, value }) => {
   return (
     <div>
       <h2>Search</h2>
-      <div className={styles.block}>
-        <p className={styles.search_txt}>Search Contact</p>
-        <input
-          className={styles.form}
-          type="text"
-          onChange={searchContact}
-          placeholder="search"
-          value={value}
-        />
-      </div>
+
+      <input
+        className={styles.form}
+        type="text"
+        onChange={searchContact}
+        placeholder="search"
+        value={value}
+      />
     </div>
   );
 };
