@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./filter.module.css";
 
-const Filter = ({ searchContact, value }) => {
+const Filter = ({ value, onFilter }) => {
   return (
     <div>
       <h2>Search</h2>
@@ -9,9 +9,9 @@ const Filter = ({ searchContact, value }) => {
       <input
         className={styles.form}
         type="text"
-        onChange={searchContact}
         placeholder="search"
         value={value}
+        onChange={onFilter}
       />
     </div>
   );

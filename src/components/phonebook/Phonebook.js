@@ -8,55 +8,71 @@ import styles from "./phonebook.module.css";
 class Phonebook extends Component {
   state = {
     contacts: [],
-    name: "",
-    number: "",
     filter: "",
   };
 
   addContact = (contact) => {
-    this.setState((prevState) => ({
-      contacts: [...prevState.contacts, contact],
-    }));
+    this.setState((prevState) => {
+      if (this.state.contacts.find((item) => item.name === contact.name)) {
+        alert("The name is already exsist");
+        return {
+          contacts: [...prevState.contacts],
+        };
+      } else {
+        return {
+          contacts: [...prevState.contacts, contact],
+        };
+      }
+    });
   };
 
-  handleChange = (e) => {
-    const name = e.target.name;
-    const number = e.target.number;
-    // this.setState({ []: e.target.value });
+  handleFilter = (e) => {
+    this.setState({ filter: e.target.value });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
     const { name, number } = this.state;
-    this.props.addContact({ id: uuidv4(), name, number });
+    this.addContact({ id: uuidv4(), name: name, number: number });
     this.setState({ name: "", number: "" });
   };
 
   getFilteredData = () => {
     return this.state.filter
-      ? this.state.products.filter((name) =>
-          name.title.toLowerCase().includes(this.state.filter.toLowerCase())
+      ? this.state.contacts.filter((item) =>
+          item.name.toLowerCase().includes(this.state.filter.toLowerCase())
         )
       : this.state.contacts;
   };
 
+  onDelete = (id) => {
+    this.setState((prevState) => {
+      return {
+        contacts: prevState.contacts.filter((item) => item.id !== id),
+      };
+    });
+  };
+
   render() {
-    const { name, number, contacts } = this.state;
+    const { contacts, filter } = this.state;
     return (
       <>
         <div className={styles.block}>
           <div className={styles.form}>
             <h1>Phonebook</h1>
-            <ContactForm
-              addContact={this.addContact}
-              name={name}
-              number={number}
-            />{" "}
-          </div>{" "}
+            <ContactForm addContact={this.addContact} />
+          </div>
           <div className={styles.contacts}>
-            <Filter />
+            <Filter
+              searchContact={this.getFilteredData}
+              value={filter}
+              onFilter={this.handleFilter}
+            />
 
-            <ContactList />
+            <ContactList
+              contacts={this.getFilteredData()}
+              onDelete={this.onDelete}
+            />
           </div>
         </div>
       </>
