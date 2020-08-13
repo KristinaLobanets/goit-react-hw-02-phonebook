@@ -22,11 +22,11 @@ class Phonebook extends Component {
   //   this.setState({ [name]: target.value });
   // };
 
-  // handleChange = (e) => {
-  //   const name = e.target.name;
-  //   const number = e.target.number;
-  //   this.setState({ [name]: e.target.value });
-  // };
+  handleChange = (e) => {
+    const name = e.target.name;
+    const number = e.target.number;
+    // this.setState({ [name]: e.target.value });
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();

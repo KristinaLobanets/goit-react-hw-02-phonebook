@@ -15,6 +15,7 @@ const ContactForm = ({ number, name, handleChange, addContact }) => {
               name="name"
               placeholder="Your Name"
               value={name}
+              onChange={handleChange}
             ></input>
           </label>
           <label className={styles.label}>
@@ -25,6 +26,7 @@ const ContactForm = ({ number, name, handleChange, addContact }) => {
               name="number"
               placeholder="Your Number"
               value={number}
+              onChange={handleChange}
             ></input>
           </label>
           <button className={styles.button} type="submit">
