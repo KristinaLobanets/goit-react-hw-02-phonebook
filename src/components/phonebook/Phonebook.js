@@ -80,6 +80,12 @@ class Phonebook extends Component {
 export default Phonebook;
 
 Phonebook.propTypes = {
-  contacts: PropTypes.array,
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      number: PropTypes.string,
+    })
+  ),
   filter: PropTypes.string,
 };

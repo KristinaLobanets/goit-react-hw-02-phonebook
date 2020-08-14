@@ -64,6 +64,6 @@ class ContactForm extends Component {
 export default ContactForm;
 
 ContactForm.propTypes = {
-  number: PropTypes.number,
+  number: PropTypes.string,
   name: PropTypes.string,
 };

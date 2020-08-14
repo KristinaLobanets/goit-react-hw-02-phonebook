@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../ContactList/ContactList.module.css";
 
 const Contacts = ({ contacts, onDelete }) => {
   return (
@@ -7,9 +8,14 @@ const Contacts = ({ contacts, onDelete }) => {
         <h2>Contacts</h2>
         <ul>
           {contacts.map((contact) => (
-            <li key={contact.id}>
+            <li className={styles.contact_li} key={contact.id}>
               {contact.name} -{contact.number}
-              <button onClick={() => onDelete(contact.id)}>Delete</button>
+              <button
+                className={styles.contact_btn}
+                onClick={() => onDelete(contact.id)}
+              >
+                Delete
+              </button>
             </li>
           ))}
         </ul>
