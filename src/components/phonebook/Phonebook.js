@@ -4,6 +4,7 @@ import ContactList from "../ContactList/ContactList";
 import Filter from "../filter/filter";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./phonebook.module.css";
+import PropTypes from "prop-types";
 
 class Phonebook extends Component {
   state = {
@@ -77,3 +78,8 @@ class Phonebook extends Component {
   }
 }
 export default Phonebook;
+
+Phonebook.propTypes = {
+  contacts: PropTypes.array,
+  filter: PropTypes.string,
+};
