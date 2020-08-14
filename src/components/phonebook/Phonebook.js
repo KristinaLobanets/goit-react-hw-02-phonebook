@@ -12,18 +12,15 @@ class Phonebook extends Component {
   };
 
   addContact = (contact) => {
-    this.setState((prevState) => {
-      if (this.state.contacts.find((item) => item.name === contact.name)) {
-        alert("The name is already exsist");
-        return {
-          contacts: [...prevState.contacts],
-        };
-      } else {
+    if (this.state.contacts.find((item) => item.name === contact.name)) {
+      alert("The name is already exsist");
+    } else {
+      this.setState((prevState) => {
         return {
           contacts: [...prevState.contacts, contact],
         };
-      }
-    });
+      });
+    }
   };
 
   handleFilter = (e) => {
@@ -54,7 +51,7 @@ class Phonebook extends Component {
   };
 
   render() {
-    const { contacts, filter } = this.state;
+    const { filter } = this.state;
     return (
       <>
         <div className={styles.block}>
